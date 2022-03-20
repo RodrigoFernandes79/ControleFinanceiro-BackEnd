@@ -62,4 +62,10 @@ public class ReceitaService {
 			}
 	}
 
+	public void deletarReceitasPorId(Long id) {
+		repository.findById(id)
+		.orElseThrow(()-> new NoSuchElementException("Id "+ id+ " não pode ser encontrado!"));
+		repository.deleteById(id);
+	}
+
 }
