@@ -53,6 +53,7 @@ public class FixaService {
 				obj.setDescricao(fixas.getDescricao());
 				obj.setValor(fixas.getValor());
 				obj.setDataPagamento(fixas.getDataPagamento());
+				obj.setCategoria(fixas.getCategoria());
 				Fixas rec = repository.save(obj);
 
 				return rec;

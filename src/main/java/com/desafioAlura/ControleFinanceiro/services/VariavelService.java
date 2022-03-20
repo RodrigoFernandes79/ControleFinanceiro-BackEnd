@@ -53,6 +53,7 @@ public class VariavelService {
 				obj.setDescricao(variaveis.getDescricao());
 				obj.setValor(variaveis.getValor());
 				obj.setDataPagamento(variaveis.getDataPagamento());
+				obj.setCategoria(variaveis.getCategoria());
 				Variaveis rec = repository.save(obj);
 
 				return rec;

@@ -12,37 +12,42 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.desafioAlura.ControleFinanceiro.models.enums.Categoria;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public abstract class Despesas {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@NotBlank(message="Campo Obrigatório!")
+	protected Long id;
+
+	@NotBlank(message = "Campo Obrigatório!")
 	@Column(unique = true, nullable = false)
-	private String descricao;
-	
-	@NotNull(message="Campo Obrigatório!")
-	@Column(nullable=false)
-	private BigDecimal valor;
-	
-	@NotNull(message="Campo Obrigatório!")
-	@JsonFormat(pattern="dd/MM/yyyy")
-	private LocalDate dataPagamento;
+	protected String descricao;
+
+	@NotNull(message = "Campo Obrigatório!")
+	@Column(nullable = false)
+	protected BigDecimal valor;
+
+	protected Integer categoria;
+
+	@NotNull(message = "Campo Obrigatório!")
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	protected LocalDate dataPagamento;
 
 	public Despesas() {
 		super();
-		
+		this.setCategoria(Categoria.OUTRAS);
+
 	}
 
-	public Despesas(Long id, String descricao, BigDecimal valor, LocalDate dataPagamento) {
+	public Despesas(Long id, String descricao, BigDecimal valor, Categoria categoria, LocalDate dataPagamento) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 		this.valor = valor;
+		this.categoria = (categoria == null) ? 7 : categoria.getCod();
 		this.dataPagamento = dataPagamento;
 	}
 
@@ -70,6 +75,14 @@ public abstract class Despesas {
 		this.valor = valor;
 	}
 
+	public Categoria getCategoria() {
+		return Categoria.toEnum(categoria);
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria.getCod();
+	}
+
 	public LocalDate getDataPagamento() {
 		return dataPagamento;
 	}
@@ -95,10 +108,4 @@ public abstract class Despesas {
 		return Objects.equals(id, other.id);
 	}
 
-	
-	
-
 }
-
-
-
