@@ -1,6 +1,9 @@
 package com.desafioAlura.ControleFinanceiro.services;
 
+import java.util.List;
+import java.util.Optional;
 
+import javax.persistence.NonUniqueResultException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,12 +13,23 @@ import com.desafioAlura.ControleFinanceiro.repositories.ReceitasRepository;
 
 @Service
 public class ReceitaService {
-	
+
 	@Autowired
 	private ReceitasRepository repository;
 
-	public Receitas adicionarReceita( Receitas receita) {
-		Receitas obj = repository.save(receita);
+	public Receitas adicionarReceita(Receitas receita) {
+		Optional<Receitas> obj1 = repository.findReceitasBydescricao(receita.getDescricao());
+		if(obj1.isPresent()) {
+			throw new NonUniqueResultException("Receita já existe no Banco de Dados!");
+			}else {
+				Receitas obj = repository.save(receita);
+		return obj;
+		}
+	}
+
+	public List<Receitas> listarReceitas() {
+		List<Receitas> obj = repository.findAll();
+
 		return obj;
 	}
 
