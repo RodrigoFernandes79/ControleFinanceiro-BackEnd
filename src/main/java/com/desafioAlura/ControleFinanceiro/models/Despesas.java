@@ -20,21 +20,21 @@ public abstract class Despesas {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Long id;
+	private Long id;
 
 	@NotBlank(message = "Campo Obrigatório!")
 	@Column(unique = true, nullable = false)
-	protected String descricao;
+	private String descricao;
 
 	@NotNull(message = "Campo Obrigatório!")
 	@Column(nullable = false)
-	protected BigDecimal valor;
+	private BigDecimal valor;
 
-	protected Integer categoria;
+	private Integer categoria;
 
 	@NotNull(message = "Campo Obrigatório!")
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	protected LocalDate dataPagamento;
+	private LocalDate dataPagamento;
 
 	public Despesas() {
 		super();

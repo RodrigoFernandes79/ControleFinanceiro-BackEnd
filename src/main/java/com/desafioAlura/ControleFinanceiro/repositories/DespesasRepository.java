@@ -8,17 +8,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.desafioAlura.ControleFinanceiro.models.Fixas;
+import com.desafioAlura.ControleFinanceiro.models.Despesas;
 
 @Repository
-public interface FixasRepository extends JpaRepository<Fixas, Long> {
+public interface DespesasRepository extends JpaRepository<Despesas, Long> {
 	@Query(value = "SELECT * FROM DESPESAS WHERE DESCRICAO= :descricao", nativeQuery = true)
-	Optional<Fixas> findDespesasFixasBydescricao(@Param(value = "descricao") String descricao);
+	Optional<Despesas> findDespesasBydescricao(@Param(value = "descricao") String descricao);
 
-	@Query(value = "SELECT * FROM DESPESAS WHERE DTYPE= :fixas", nativeQuery = true)
-	Optional<Fixas> findDespesasFixasByFixas(@Param(value = "fixas") String fixas);
+	
 
 	@Query(value = "SELECT * FROM DESPESAS WHERE DESCRICAO like :descricao", nativeQuery = true)
-	List<Fixas> ListarDespesasFixasByDescricao(@Param(value = "descricao") String descricao);
+	List<Despesas> ListarDespesasByDescricao(@Param(value = "descricao") String descricao);
 
 }
