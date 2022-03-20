@@ -15,14 +15,14 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-public class Despesas {
+public abstract class Despesas {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@NotBlank(message="Campo Obrigatório!")
-	@Column(nullable=false)
+	@Column(unique = true, nullable = false)
 	private String descricao;
 	
 	@NotNull(message="Campo Obrigatório!")
