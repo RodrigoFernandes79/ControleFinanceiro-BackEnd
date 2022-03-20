@@ -2,6 +2,7 @@ package com.desafioAlura.ControleFinanceiro.exceptions;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import javax.persistence.NonUniqueResultException;
 
@@ -24,6 +25,19 @@ public class ExceptionsControllerAdvice {
 		ApiException obj = new ApiException(fieldName);
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(obj);
 	}
+	
+	@ExceptionHandler( NoSuchElementException.class)
+	public ResponseEntity<ApiException> validationNotFoundException( NoSuchElementException ex){
+		
+		String fieldName = ex.getMessage();
+		
+		
+		
+		ApiException obj = new ApiException(fieldName);
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(obj);
+	}
+	
+	
 	
 	
 	

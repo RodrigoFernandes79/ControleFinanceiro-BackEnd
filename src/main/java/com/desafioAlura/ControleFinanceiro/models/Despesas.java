@@ -29,6 +29,7 @@ public class Despesas {
 	@Column(nullable=false)
 	private BigDecimal valor;
 	
+	@NotNull(message="Campo Obrigatório!")
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private LocalDate dataPagamento;
 

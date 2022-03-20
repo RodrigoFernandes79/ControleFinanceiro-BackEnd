@@ -1,11 +1,13 @@
 package com.desafioAlura.ControleFinanceiro.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import javax.persistence.NonUniqueResultException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.desafioAlura.ControleFinanceiro.models.Receitas;
@@ -31,6 +33,13 @@ public class ReceitaService {
 		List<Receitas> obj = repository.findAll();
 
 		return obj;
+	}
+
+	public Receitas listarReceitasPorId(Long id) {
+		Optional<Receitas> obj = repository.findById(id);
+		obj.orElseThrow(()-> new NoSuchElementException("Id "+ id+ " não pode ser encontrado!"));
+				
+		return obj.get();
 	}
 
 }
