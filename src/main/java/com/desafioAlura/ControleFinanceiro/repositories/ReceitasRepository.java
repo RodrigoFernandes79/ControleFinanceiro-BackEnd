@@ -2,6 +2,8 @@ package com.desafioAlura.ControleFinanceiro.repositories;
 
 
 
+
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +17,11 @@ import com.desafioAlura.ControleFinanceiro.models.Receitas;
 public interface ReceitasRepository extends JpaRepository<Receitas, Long>{
 	@Query(value="SELECT * FROM RECEITAS WHERE DESCRICAO= :descricao", nativeQuery=true)
 	Optional<Receitas> findReceitasBydescricao(@Param(value="descricao")String descricao);
+	
+	@Query(value="SELECT * FROM RECEITAS WHERE DESCRICAO like :descricao", nativeQuery=true)
+	List<Receitas> ListarReceitasByDescricao(@Param(value="descricao") String descricao);
+	
+	
 	
 
 }

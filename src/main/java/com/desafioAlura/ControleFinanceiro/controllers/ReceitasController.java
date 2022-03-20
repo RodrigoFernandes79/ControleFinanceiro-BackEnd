@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +37,7 @@ public class ReceitasController {
 		
 	}
 	
-	@GetMapping
+	@GetMapping("/getall")
 	public ResponseEntity<List<Receitas>> listarReceitas(){
 		List<Receitas> obj = receitaService.listarReceitas();
 		return ResponseEntity.ok().body(obj);
@@ -65,6 +66,13 @@ public class ReceitasController {
 		receitaService.deletarReceitasPorId(id);
 	}
 
+	//buscar por Receitas pela descrição:
+	
+	@GetMapping//localhost//8080/receitas/descricao=descricao
+	public  ResponseEntity<List<Receitas>> listarReceitasPorDescricao(@RequestParam(value="descricao",required=false) String descricao){
+		List<Receitas> obj = receitaService.listarReceitasPorDescricao(descricao);
+		return ResponseEntity.ok().body(obj);
+	}
 	
 	
 

@@ -68,4 +68,10 @@ public class ReceitaService {
 		repository.deleteById(id);
 	}
 
+	public List<Receitas> listarReceitasPorDescricao(String descricao) {
+		return repository.ListarReceitasByDescricao(descricao);
+		
+		
+	}
+
 }
