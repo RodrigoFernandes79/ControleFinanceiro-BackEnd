@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import javax.persistence.NonUniqueResultException;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -40,6 +41,25 @@ public class ReceitaService {
 		obj.orElseThrow(()-> new NoSuchElementException("Id "+ id+ " não pode ser encontrado!"));
 				
 		return obj.get();
+	}
+
+	public Receitas atualizacaoReceitas(@Valid Receitas receitas, Long id) {
+		Optional<Receitas> obj1 = repository.findReceitasBydescricao(receitas.getDescricao());
+		if(obj1.isPresent() && obj1.get().getId()!=id) {
+			throw new NonUniqueResultException("Receita já existe no Banco de Dados!");
+			}else {
+				
+		return repository.findById(id)
+				.map(obj->{
+					obj.getId();
+					obj.setDescricao(receitas.getDescricao());
+					obj.setValor(receitas.getValor());
+					obj.setDataRecebimento(receitas.getDataRecebimento());
+					Receitas rec = repository.save(obj);
+					
+					return rec;
+			}).orElseThrow(()-> new NoSuchElementException("Id "+ id+ " não pode ser encontrado!"));
+			}
 	}
 
 }
