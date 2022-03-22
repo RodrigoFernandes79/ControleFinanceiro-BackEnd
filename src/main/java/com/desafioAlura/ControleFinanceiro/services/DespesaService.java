@@ -14,8 +14,6 @@ public class DespesaService {
 	@Autowired
 	private DespesasRepository repository;
 
-
-
 	public List<Despesas> listarDespesas() {
 		List<Despesas> obj = repository.findAll();
 
@@ -25,6 +23,11 @@ public class DespesaService {
 	public List<Despesas> listarDespesasPorDescricao(String descricao) {
 		return repository.ListarDespesasByDescricao(descricao);
 
+	}
+
+	public List<Despesas> listarDespesasPorMesEAno(Integer mes, Integer ano) {
+
+		return repository.listarDespesasByMonthAndYear(mes, ano);
 	}
 
 }

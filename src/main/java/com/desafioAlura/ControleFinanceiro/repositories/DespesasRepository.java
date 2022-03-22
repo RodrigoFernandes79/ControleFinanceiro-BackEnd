@@ -15,9 +15,10 @@ public interface DespesasRepository extends JpaRepository<Despesas, Long> {
 	@Query(value = "SELECT * FROM DESPESAS WHERE DESCRICAO= :descricao", nativeQuery = true)
 	Optional<Despesas> findDespesasBydescricao(@Param(value = "descricao") String descricao);
 
-	
-
 	@Query(value = "SELECT * FROM DESPESAS WHERE DESCRICAO like :descricao", nativeQuery = true)
 	List<Despesas> ListarDespesasByDescricao(@Param(value = "descricao") String descricao);
+
+	@Query(value = "SELECT * FROM DESPESAS WHERE MONTH(data_pagamento)= :mes AND year(data_pagamento)= :ano", nativeQuery = true)
+	List<Despesas> listarDespesasByMonthAndYear(@Param(value = "mes") Integer mes, @Param(value = "ano") Integer ano);
 
 }
