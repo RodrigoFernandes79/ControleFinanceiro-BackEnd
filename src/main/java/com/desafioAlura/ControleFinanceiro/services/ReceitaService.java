@@ -8,7 +8,6 @@ import javax.persistence.NonUniqueResultException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 
 import com.desafioAlura.ControleFinanceiro.models.Receitas;
@@ -72,6 +71,11 @@ public class ReceitaService {
 		return repository.ListarReceitasByDescricao(descricao);
 		
 		
+	}
+
+	public List<Receitas> listarReceitasPorMesEAno(Integer mes,Integer ano) {
+		
+		return repository.listarReceitasByMonthAndYear(mes, ano);
 	}
 
 }
