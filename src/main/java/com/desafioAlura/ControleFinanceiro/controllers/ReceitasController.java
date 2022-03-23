@@ -75,7 +75,7 @@ public class ReceitasController {
 	}
 //buscar por Receitas por mes e ano:
 	
-	@GetMapping(value="/{mes}/{ano}")
+	@GetMapping(value="/{ano}/{mes}")
 	public ResponseEntity<List<Receitas>> listarReceitasPorMesEAno(@PathVariable("mes") Integer mes,@PathVariable("ano") Integer ano){
 		List<Receitas> obj = receitaService.listarReceitasPorMesEAno(mes,ano);
 			return ResponseEntity.ok().body(obj);

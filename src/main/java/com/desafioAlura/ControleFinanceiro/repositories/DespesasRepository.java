@@ -1,5 +1,7 @@
 package com.desafioAlura.ControleFinanceiro.repositories;
 
+
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,5 +22,9 @@ public interface DespesasRepository extends JpaRepository<Despesas, Long> {
 
 	@Query(value = "SELECT * FROM DESPESAS WHERE MONTH(data_pagamento)= :mes AND year(data_pagamento)= :ano", nativeQuery = true)
 	List<Despesas> listarDespesasByMonthAndYear(@Param(value = "mes") Integer mes, @Param(value = "ano") Integer ano);
-
+	
+	@Query(value= "SELECT SUM(valor) AS Total_Despesas FROM DESPESAS WHERE MONTH(data_pagamento) = :mes AND year(data_pagamento) = :ano ;",nativeQuery=true)
+	BigDecimal somaTotalDespesas(@Param(value = "mes") Integer mes, @Param(value = "ano") Integer ano);
 }
+
+

@@ -37,7 +37,7 @@ public class DespesasController {
 
 	// buscar Despesas por mes e ano:
 
-	@GetMapping(value = "/{mes}/{ano}")
+	@GetMapping(value = "/{ano}/{mes}")
 	public ResponseEntity<List<Despesas>> listarDespesasPorMesEAno(@PathVariable("mes") Integer mes,
 			@PathVariable("ano") Integer ano) {
 		List<Despesas> obj = service.listarDespesasPorMesEAno(mes, ano);

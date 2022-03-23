@@ -3,6 +3,8 @@ package com.desafioAlura.ControleFinanceiro.repositories;
 
 
 
+
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,4 +28,6 @@ public interface ReceitasRepository extends JpaRepository<Receitas, Long> {
 	@Query(value = "SELECT * FROM RECEITAS WHERE MONTH(data_recebimento)= :mes AND year(data_recebimento)= :ano", nativeQuery = true)
 	List<Receitas> listarReceitasByMonthAndYear(@Param(value = "mes") Integer mes, @Param(value = "ano") Integer ano);
 
+	@Query(value= "SELECT SUM(valor) AS Total_Receita FROM RECEITAS WHERE MONTH(data_recebimento) =:mes AND year(data_recebimento) = :ano ;",nativeQuery=true)
+	BigDecimal somaTotalReceitas(@Param(value = "mes") Integer mes, @Param(value = "ano") Integer ano);
 }
