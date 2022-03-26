@@ -1,12 +1,14 @@
 package com.desafioAlura.ControleFinanceiro.services;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.desafioAlura.ControleFinanceiro.DTOs.ResumoMesDTO;
 import com.desafioAlura.ControleFinanceiro.repositories.DespesasRepository;
+import com.desafioAlura.ControleFinanceiro.repositories.DespesasRepository.GastoCategoria;
 import com.desafioAlura.ControleFinanceiro.repositories.ReceitasRepository;
 
 @Service
@@ -33,9 +35,13 @@ public class ResumoMesDTOService {
 		} else {
 			resumoMes.setValorTotalDespesas(BigDecimal.ZERO);
 		}
-		
+
 		BigDecimal saldoFinalMes = totalReceita.subtract(totalDespesa);
 		resumoMes.setSaldoFinalMes(saldoFinalMes);
+
+		List<GastoCategoria> listarCategoriaMes = despesaRepository.listarDespesasPorCategoria(mes, ano);
+
+		resumoMes.setGastoCategoria(listarCategoriaMes);
 
 		return resumoMes;
 	}
