@@ -2,6 +2,7 @@ package com.desafioAlura.ControleFinanceiro.models;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+
 import java.util.Objects;
 
 import javax.persistence.Column;
