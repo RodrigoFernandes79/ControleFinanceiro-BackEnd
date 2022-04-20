@@ -24,19 +24,23 @@ public class ResumoMesDTOService {
 		ResumoMesDTO resumoMes = new ResumoMesDTO();
 
 		BigDecimal totalReceita = receitaRepository.somaTotalReceitas(mes, ano);
-		if (totalReceita != BigDecimal.ZERO) {
+		if (totalReceita!= null) {
 			resumoMes.setValorTotalReceitas(totalReceita);
+			
 		} else {
-			resumoMes.setValorTotalReceitas(BigDecimal.ZERO);
+			resumoMes.setValorTotalReceitas(BigDecimal.valueOf(0));
+			totalReceita= BigDecimal.valueOf(0);
 		}
 		BigDecimal totalDespesa = despesaRepository.somaTotalDespesas(mes, ano);
-		if (totalDespesa != BigDecimal.ZERO) {
+		if (totalDespesa != null) {
 			resumoMes.setValorTotalDespesas(totalDespesa);
 		} else {
-			resumoMes.setValorTotalDespesas(BigDecimal.ZERO);
+			resumoMes.setValorTotalDespesas(BigDecimal.valueOf(0));
+			totalDespesa = BigDecimal.valueOf(0);
 		}
 
 		BigDecimal saldoFinalMes = totalReceita.subtract(totalDespesa);
+		
 		resumoMes.setSaldoFinalMes(saldoFinalMes);
 
 		List<GastoCategoria> listarCategoriaMes = despesaRepository.listarDespesasPorCategoria(mes, ano);

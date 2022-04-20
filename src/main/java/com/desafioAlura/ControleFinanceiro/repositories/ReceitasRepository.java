@@ -22,12 +22,12 @@ public interface ReceitasRepository extends JpaRepository<Receitas, Long> {
 	@Query(value = "SELECT * FROM RECEITAS WHERE DESCRICAO= :descricao", nativeQuery = true)
 	Optional<Receitas> findReceitasBydescricao(@Param(value = "descricao") String descricao);
 
-	@Query(value = "SELECT * FROM RECEITAS WHERE DESCRICAO like :descricao", nativeQuery = true)
+	@Query(value = "SELECT * FROM RECEITAS WHERE DESCRICAO like %:descricao%", nativeQuery = true)
 	List<Receitas> ListarReceitasByDescricao(@Param(value = "descricao") String descricao);
 
-	@Query(value = "SELECT * FROM RECEITAS WHERE MONTH(data_recebimento)= :mes AND year(data_recebimento)= :ano", nativeQuery = true)
+	@Query(value = "SELECT * FROM RECEITAS WHERE extract(MONTH From data_recebimento)= :mes AND extract(year from data_recebimento)= :ano", nativeQuery = true)
 	List<Receitas> listarReceitasByMonthAndYear(@Param(value = "mes") Integer mes, @Param(value = "ano") Integer ano);
 
-	@Query(value= "SELECT SUM(valor) AS Total_Receita FROM RECEITAS WHERE MONTH(data_recebimento) =:mes AND year(data_recebimento) = :ano ;",nativeQuery=true)
+	@Query(value= "SELECT SUM(valor) AS Total_Receita FROM RECEITAS WHERE extract(MONTH From data_recebimento)= :mes AND extract(year from data_recebimento)= :ano",nativeQuery=true)
 	BigDecimal somaTotalReceitas(@Param(value = "mes") Integer mes, @Param(value = "ano") Integer ano);
 }
