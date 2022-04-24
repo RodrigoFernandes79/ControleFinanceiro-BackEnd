@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.desafioAlura.ControleFinanceiro.models.Despesas;
-
+import com.desafioAlura.ControleFinanceiro.repositories.DespesasRepository.GastoTipoDTO;
 import com.desafioAlura.ControleFinanceiro.services.DespesaService;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -69,7 +69,7 @@ public class DespesasController {
 	}
 
 
-	// buscar por Despesas fixas pela descrição:
+	// buscar por Despesas pela descrição:
 
 	@GetMapping // localhost//8080/despesas?descricao=descricao
 	public ResponseEntity<List<Despesas>> listarDespesasPorDescricao(
@@ -84,6 +84,14 @@ public class DespesasController {
 	public ResponseEntity<List<Despesas>> listarDespesasPorMesEAno(@PathVariable("mes") Integer mes,
 			@PathVariable("ano") Integer ano) {
 		List<Despesas> obj = service.listarDespesasPorMesEAno(mes, ano);
+		return ResponseEntity.ok().body(obj);
+	}
+	
+	//buscar totais de despesas fixas ou variaveis:
+	
+	@GetMapping("/tipos")
+	public ResponseEntity<List<GastoTipoDTO>> listarDespesasPorTipo(){
+		List<GastoTipoDTO> obj = service.listarDespesasPorTipo();
 		return ResponseEntity.ok().body(obj);
 	}
 }

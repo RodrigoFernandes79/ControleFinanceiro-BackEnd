@@ -11,6 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import com.desafioAlura.ControleFinanceiro.models.Despesas;
 import com.desafioAlura.ControleFinanceiro.models.enums.Categoria;
+import com.desafioAlura.ControleFinanceiro.models.enums.Tipo;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Repository
 public interface DespesasRepository extends JpaRepository<Despesas, Long> {
@@ -30,10 +32,35 @@ public interface DespesasRepository extends JpaRepository<Despesas, Long> {
 	List<GastoCategoria> listarDespesasPorCategoria(@Param(value = "mes") Integer mes,
 			@Param(value = "ano") Integer ano);
 
+	@Query(value = "SELECT categoria, SUM(valor) AS valor_total FROM Despesas GROUP BY CATEGORIA", nativeQuery = true)
+	List<GastoCategoria> gastoPorCategoria();
+
 	public static interface GastoCategoria {
 		Categoria getCategoria();
 
 		BigDecimal getValor_total();
 
 	}
+
+	@Query(value = "SELECT MONTH(data_pagamento) as dataPagamento, SUM(valor) AS Total_Despesas FROM DESPESAS GROUP BY MONTH(data_pagamento) ORDER BY MONTH(data_pagamento)", nativeQuery = true)
+	List<DespesasDTO> totalDespesasPorMes();
+
+	public static interface DespesasDTO {
+		@JsonFormat(pattern = "MM")
+		int getDataPagamento();
+
+		BigDecimal getTotal_Despesas();
+	}
+
+	@Query(value = "SELECT Tipo, Sum(valor) as valor_total from despesas group by tipo;", nativeQuery = true)
+	List<GastoTipoDTO> gastoPorTipoDespesas();
+
+	public static interface GastoTipoDTO {
+		 Tipo getTipo();
+
+		BigDecimal getValor_total();
+	}
+	
+	@Query(value = "SELECT SUM(valor) AS despesasTotal FROM DESPESAS;", nativeQuery=true)
+	BigDecimal totalDespesas();
 }

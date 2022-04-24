@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.desafioAlura.ControleFinanceiro.models.Despesas;
 import com.desafioAlura.ControleFinanceiro.repositories.DespesasRepository;
+import com.desafioAlura.ControleFinanceiro.repositories.DespesasRepository.GastoTipoDTO;
 
 @Service
 public class DespesaService {
@@ -75,6 +76,11 @@ public class DespesaService {
 	public List<Despesas> listarDespesasPorMesEAno(Integer mes, Integer ano) {
 
 		return repository.listarDespesasByMonthAndYear(mes, ano);
+	}
+
+	public List<GastoTipoDTO> listarDespesasPorTipo() {
+		
+		return repository.gastoPorTipoDespesas();
 	}
 
 }
