@@ -28,7 +28,7 @@ public interface ReceitasRepository extends JpaRepository<Receitas, Long> {
 	@Query(value = "SELECT SUM(valor) AS Total_Receita FROM RECEITAS WHERE extract(MONTH From data_recebimento)= :mes AND extract(year from data_recebimento)= :ano", nativeQuery = true)
 	BigDecimal somaTotalReceitas(@Param(value = "mes") Integer mes, @Param(value = "ano") Integer ano);
 
-	@Query(value = "SELECT MONTH(data_recebimento) as dataRecebimento, SUM(valor) AS Total_Receitas FROM RECEITAS GROUP BY MONTH(data_recebimento) ORDER BY MONTH(data_recebimento)", nativeQuery = true)
+	@Query(value = "SELECT EXTRACT(MONTH FROM data_recebimento) as dataRecebimento, SUM(valor) AS Total_Receitas FROM RECEITAS GROUP BY EXTRACT(MONTH FROM data_recebimento) ORDER BY EXTRACT(MONTH FROM data_recebimento)", nativeQuery = true)
 	List<ReceitasDTO> totalReceitasPorMes();
 
 	public static interface ReceitasDTO {

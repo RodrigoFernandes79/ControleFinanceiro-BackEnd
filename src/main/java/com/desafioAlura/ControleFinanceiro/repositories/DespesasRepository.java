@@ -25,10 +25,10 @@ public interface DespesasRepository extends JpaRepository<Despesas, Long> {
 	@Query(value = "SELECT * FROM DESPESAS WHERE extract(MONTH From data_pagamento)= :mes AND extract(year from data_pagamento)= :ano", nativeQuery = true)
 	List<Despesas> listarDespesasByMonthAndYear(@Param(value = "mes") Integer mes, @Param(value = "ano") Integer ano);
 
-	@Query(value = "SELECT SUM(valor) AS Total_Despesas FROM DESPESAS WHERE MONTH(data_pagamento) = :mes AND year(data_pagamento) = :ano ;", nativeQuery = true)
+	@Query(value = "SELECT SUM(valor) AS Total_Despesas FROM DESPESAS WHERE EXTRACT(MONTH FROM data_pagamento) = :mes AND EXTRACT(year FROM data_pagamento) = :ano ;", nativeQuery = true)
 	BigDecimal somaTotalDespesas(@Param(value = "mes") Integer mes, @Param(value = "ano") Integer ano);
 
-	@Query(value = "SELECT categoria, SUM(valor) AS valor_total FROM Despesas  WHERE MONTH(data_pagamento) = :mes AND year(data_pagamento) = :ano GROUP BY categoria", nativeQuery = true)
+	@Query(value = "SELECT categoria, SUM(valor) AS valor_total FROM Despesas  WHERE EXTRACT(MONTH FROM data_pagamento) = :mes AND EXTRACT(year FROM data_pagamento) = :ano GROUP BY categoria", nativeQuery = true)
 	List<GastoCategoria> listarDespesasPorCategoria(@Param(value = "mes") Integer mes,
 			@Param(value = "ano") Integer ano);
 
@@ -42,7 +42,7 @@ public interface DespesasRepository extends JpaRepository<Despesas, Long> {
 
 	}
 
-	@Query(value = "SELECT MONTH(data_pagamento) as dataPagamento, SUM(valor) AS Total_Despesas FROM DESPESAS GROUP BY MONTH(data_pagamento) ORDER BY MONTH(data_pagamento)", nativeQuery = true)
+	@Query(value = "SELECT EXTRACT(MONTH FROM data_pagamento) as dataPagamento, SUM(valor) AS Total_Despesas FROM DESPESAS GROUP BY EXTRACT(MONTH FROM data_pagamento) ORDER BY EXTRACT(MONTH FROM data_pagamento)", nativeQuery = true)
 	List<DespesasDTO> totalDespesasPorMes();
 
 	public static interface DespesasDTO {
