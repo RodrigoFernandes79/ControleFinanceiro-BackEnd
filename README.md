@@ -9,9 +9,49 @@ Criando API Desafio Alura
 
 ## Endpoints das APIs no Swagger:
 ### Especificação das Entidades
-```
 
-### Especificação da Entidade Veiculo
+![swagger5](https://user-images.githubusercontent.com/83513696/165858544-9349012f-f93c-4a21-963e-3fc7d89ae218.jpeg)
+```
+### Especificação da Entidade Receitas
+
+```
+![receitas](https://user-images.githubusercontent.com/83513696/165863404-d4aa781d-44c6-420c-9bea-928ef4b679ce.jpeg)
+```
+### Especificação da Entidade Despesas
+
+```
+![despesas](https://user-images.githubusercontent.com/83513696/165863427-a8ed3d4a-0a4f-484a-b065-81fb1496f66c.jpeg)
+
+```
+### Especificação da Entidade ReceitasDTO
+
+```
+![receitasDTO](https://user-images.githubusercontent.com/83513696/165863257-77233500-5547-4ee8-ac7d-2f87ad96bc71.jpeg)
+
+```
+### Especificação da Entidade DespesasDTO
+
+```
+![despesasDTO](https://user-images.githubusercontent.com/83513696/165863269-2653161a-2ca8-4aae-a72c-0152e4ab14fd.jpeg)
+
+```
+### Especificação da Entidade GastoCategoriaDTO
+
+```
+![gastocategoria](https://user-images.githubusercontent.com/83513696/165863282-a367140c-a6d9-454d-a5f9-58bffa74340d.jpeg)
+
+```
+### Especificação da Entidade GastoTipoDTO
+
+```
+![gastotipoDTO](https://user-images.githubusercontent.com/83513696/165863290-7946e83e-d9b6-4ca8-bd5f-4c732b3e9247.jpeg)
+
+```
+### Especificação da Entidade ResumoMêsDTO
+
+```
+![resumomesDTO](https://user-images.githubusercontent.com/83513696/165863294-f8974322-d840-4719-840b-947363b4c99b.jpeg)
+
 ```
 
 #### Buscar os registros de veículos na base (GET):
