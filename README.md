@@ -8,6 +8,9 @@ Criando API Desafio Alura
 
 
 ## Endpoints das APIs no Swagger:
+### Especificação das Entidades
+```
+
 ### Especificação da Entidade Veiculo
 ```
 
