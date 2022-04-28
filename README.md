@@ -4,46 +4,15 @@ Criando API Desafio Alura
 
 # Projeto API JSON RESTfull 
 
- Desafio de uma aplicação de um cadastro de veículo finalizado para o processo seletivo Tinnova
+ Desafio de uma aplicação de um cadastro de controle financeiro da Alura challenge back2
 
+
+## Endpoints das APIs no Swagger:
 ### Especificação da Entidade Veiculo
 ```
-{
-    veiculo : String,
-    marca : String,
-    ano : Integer,
-    descricao : text,
-    vendido : boolean,
-    created : datetime,
-    updated : datetime
-}
+
+#### Buscar os registros de veículos na base (GET):
 ```
-## Tecnologias utilizadas no Projeto:
-- Java
-- Spring Boot
-- JPA / Hibernate
-- Maven
-- MySql
-- Insomnia 
-
-
-## Aplicações  do Projeto:
-- Permitir o cadastro de veículos;
-- Permitir atualização de dados de um veículo;
-- Permitir a exclusão de um veículo;
-- Exibir a informação de quantos veiculos estão como não vendidos na base;
-
-## Aplicação  em Camadas:
-
-![AlicacaoCamadas](https://user-images.githubusercontent.com/83513696/139479915-43c64049-3370-4e32-8b83-914fa8ee9111.png)
-### Usamos o padrão camadas separando a aplicação backend em três camadas: 
-- Controladores Rest (Resource)
-- Camada de Serviços (Service)
-- Camada de Acesso a dados (Repository)
-### Todas as três camadas conversam com a Entidade Veiculo.
-
-
-## Endpoints das APIs no Insomnia:
 #### Buscar os registros de veículos na base (GET):
 ```
 http://localhost:8080/veiculos
@@ -112,6 +81,17 @@ http://localhost:8080/veiculos/20
 ![deletarPorId](https://user-images.githubusercontent.com/83513696/139472966-a863c66d-30c4-4b25-b3a0-9fb8c62c0965.png)
 ## Aplicação persistida no Banco de Dados MySql:
 ![tabelaVeiculo](https://user-images.githubusercontent.com/83513696/139478268-76668486-a02f-49dc-9deb-ae03df574919.png)
+
+## Aplicação  em Camadas:
+
+![AlicacaoCamadas](https://user-images.githubusercontent.com/83513696/139479915-43c64049-3370-4e32-8b83-914fa8ee9111.png)
+### Usamos o padrão camadas separando a aplicação backend em três camadas: 
+- Controladores Rest (Resource)
+- Camada de Serviços (Service)
+- Camada de Acesso a dados (Repository)
+### Todas as três camadas conversam com a Entidade Veiculo.
+
+
 
 # Como executar o projeto
 
