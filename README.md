@@ -5,7 +5,31 @@ Criando API Desafio Alura
 # Projeto API JSON RESTfull 
 
  Desafio de uma aplicação de um cadastro de controle financeiro da Alura challenge back2
+## Tecnologias utilizadas no Projeto:
+- Java
+- Spring Boot
+- JPA / Hibernate
+- Maven
+- PostgreSQL
+- Heroku
+- Insomnia 
 
+
+## Aplicações  do Projeto:
+- Permitir o cadastro Despesas e Receitas;
+- Permitir atualização de dados de Despesas e Receitas;
+- Permitir a exclusão de um lançamento de despesas e receitas;
+- Exibir a informação de lançamentos de despesas e receitas passando como parâmetro a descrição;
+- Exibir informações de lançamentos de receitas e despesas consultando por mês e ano;
+- Exibir o total de receitas e despesas consultando o mês e ano;
+- Exibir o saldo entre os lançamentos de despesas e receitas consultando o mês e ano;
+- Exibir o total de despesas por categoria consultando o mês e ano;
+- Exibir o total de despesas por categoria por cada mês;
+- Exibir o total de despesas por tipo de despesa por cada mês;
+- Exibir o total de receitas e despesas por cada mês;
+- Exibir o total de receitas;
+- Exibir o total de despesas;
+- Exibir o saldo final;
 
 ## Endpoints das APIs no Swagger:
 ### Especificação das Entidades
