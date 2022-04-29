@@ -120,7 +120,8 @@ Criando API Desafio Alura
 ## Back end
 Pré-requisitos: Java 11
 
-```bash
+```
+bash
 # clonar repositório
 git clone https://github.com/RodrigoFernandes79/ControleFinanceiro-BackEnd
 
