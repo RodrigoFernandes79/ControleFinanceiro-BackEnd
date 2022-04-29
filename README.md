@@ -12,7 +12,7 @@ Criando API Desafio Alura
 - Controladores Rest (Resource)
 - Camada de Serviços (Service)
 - Camada de Acesso a dados (Repository)
-### Todas as três camadas conversam com a Entidade Veiculo.
+### Todas as três camadas conversam com as Entidades.
 
 ## Tecnologias utilizadas no Projeto:
 - Java
