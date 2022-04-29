@@ -62,7 +62,12 @@ Criando API Desafio Alura
 ### Especificação da Classe DespesasController
 
 ```
-![swagger3](https://user-images.githubusercontent.com/83513696/165858526-785c7d05-2269-4d20-bd29-3c52a6c0db68.jpeg)
+![despesascontroller](https://user-images.githubusercontent.com/83513696/165865987-e14e70d5-ad04-4505-b490-1f5ce98aa3be.jpeg)
+```
+### Especificação da Classe ResumoMesDTOController
+
+```
+![resumomescontroller](https://user-images.githubusercontent.com/83513696/165866014-cd5a400e-9538-4921-98db-1b93f220d0c8.jpeg)
 ```
 
 #### Buscar os registros de veículos na base (GET):
