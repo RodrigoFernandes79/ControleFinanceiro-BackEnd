@@ -15,11 +15,19 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.desafioAlura.ControleFinanceiro.repositories.UsuarioRepository;
+
 @EnableWebSecurity
 public class SrpingSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private AutenticacaoService autenticacaoService;  //injetando a regra de autenticação
+	
+	@Autowired
+	private TokenService tokenService;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	
 		@Override
 		@Bean
@@ -44,9 +52,8 @@ public class SrpingSecurityConfig extends WebSecurityConfigurerAdapter {
     	.anyRequest().authenticated()
     	.and().csrf().disable()
     	.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-    	.and().addFilterBefore(new AutenticacaoViaTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+    	.and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService,usuarioRepository), UsernamePasswordAuthenticationFilter.class);
     }
-
 
      
 }
